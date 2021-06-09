@@ -33,6 +33,34 @@ class LinkedList {
   clear() {
     this.head = null;
   }
+
+  //   Remove first item form linked list
+  removeFirst() {
+    if (!this.head) {
+      return;
+    }
+
+    this.head = this.head.next;
+  }
+
+  //   Remove Last element from list
+  removeLast() {
+    if (!this.head.next) {
+      this.head = null;
+      return;
+    }
+
+    let previous = this.head;
+    let node = this.head.next;
+
+    while (node.next) {
+      previous = node;
+      node = node.next;
+    }
+
+    previous.next = null;
+    return;
+  }
 }
 
 // const node = new Node(10);
@@ -40,5 +68,5 @@ const list = new LinkedList();
 list.insetFirst(10);
 list.insetFirst(20);
 list.insetFirst(30);
-list.clear();
+list.removeLast();
 console.log(list);
