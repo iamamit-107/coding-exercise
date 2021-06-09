@@ -22,7 +22,7 @@ class LinkedList {
 
     while (node) {
       if (node.next == null) {
-        return node.data;
+        return node;
       }
 
       node = node.next;
@@ -61,6 +61,37 @@ class LinkedList {
     previous.next = null;
     return;
   }
+
+  //   Insert data to the last
+  insertLast(data) {
+    let last = this.getLast();
+    if (last) {
+      last.next = new Node(data);
+    } else {
+      this.head = new Node(data);
+    }
+  }
+
+  //   Get Element by index number
+  getAt(index) {
+    if (!this.head) {
+      return null;
+    }
+
+    let counter = 0;
+    let node = this.head;
+
+    while (node) {
+      if (index === counter) {
+        return node;
+      }
+
+      counter++;
+      node = node.next;
+    }
+
+    return null;
+  }
 }
 
 // const node = new Node(10);
@@ -68,5 +99,5 @@ const list = new LinkedList();
 list.insetFirst(10);
 list.insetFirst(20);
 list.insetFirst(30);
-list.removeLast();
-console.log(list);
+list.insertLast(40);
+console.log(list.getAt(1));
